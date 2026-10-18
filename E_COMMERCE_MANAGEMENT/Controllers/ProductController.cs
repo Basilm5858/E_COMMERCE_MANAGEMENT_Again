@@ -29,6 +29,7 @@ namespace E_COMMERCE_MANAGEMENT.Controllers
             {
                 return NotFound();
             }
+
             var res = _mapper.Map<ICollection<ProductDTO>>(products);
             return Ok(res);
         }

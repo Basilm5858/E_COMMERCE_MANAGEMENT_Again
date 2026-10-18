@@ -33,7 +33,7 @@ namespace E_COMMERCE_MANAGEMENT.Controllers
             {
                 return BadRequest("The email is using");
             }
-            if (dto.Role != "Customer" || dto.Role != "Admin")
+            if (dto.Role != "Customer" && dto.Role != "Admin")
             {
                 return BadRequest("the role must be Customer Or Admin");
             }
