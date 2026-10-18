@@ -1,6 +1,7 @@
 ﻿using E_COMMERCE_MANAGEMENT.DTOs;
 using E_COMMERCE_MANAGEMENT.Models;
 using E_COMMERCE_MANAGEMENT.Repos.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -13,6 +14,7 @@ namespace E_COMMERCE_MANAGEMENT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private readonly IUnitOfWork _unitofwork;
