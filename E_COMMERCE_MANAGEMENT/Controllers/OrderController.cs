@@ -37,6 +37,19 @@ namespace E_COMMERCE_MANAGEMENT.Controllers
             return Ok(res);
         }
 
+        [HttpGet("GetByIdWithTotalPrice")]
+        public async Task<IActionResult> GetByIdWithTotalPrice(int id)
+        {
+            var order = await _unitOfWork.OrderCustomRepo.GetByIdWithItemDetails(id);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(order);
+        }
+
         [HttpGet("CalculateTotalRevenue")]
         public async Task<IActionResult> CalculateTotalRevenue()
         {

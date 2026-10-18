@@ -27,12 +27,18 @@ namespace E_COMMERCE_MANAGEMENT.Repos.Implementation
                 }).ToListAsync();
         }
 
-        public async Task<Order?> GetByIdWithItemDetails(int id)
+        public async Task<TotalAmountDTO?> GetByIdWithItemDetails(int id)
         {
             return await _context.Orders
                 .Include(x => x.OrderItems)
-                .ThenInclude(x => x.Product)
-                .FirstOrDefaultAsync(x => x.Id == id);
+                .Where(x => x.Id == id)
+                .Select(x => new TotalAmountDTO
+                {
+                    Id = x.Id,
+                    Status = x.Status,
+                    OrderDate = x.OrderDate,
+                    TotalPrice = x.OrderItems.Sum(x => x.Quantity * x.UnitPrice)
+                }).FirstOrDefaultAsync();
         }
     }
 }

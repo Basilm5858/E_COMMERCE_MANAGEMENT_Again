@@ -65,7 +65,17 @@ namespace E_COMMERCE_MANAGEMENT.DTOs
         [Range(0.01, 1000000)]
         public decimal UnitPrice { get; set; }
     }
-
+    public class TotalAmountDTO
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public DateTime OrderDate { get; set; }
+        [Required]
+        public StatusEnum Status { get; set; } = StatusEnum.Pending;
+        [Required]
+        public decimal TotalPrice { get; set; }
+    }
     public class UpdateStatusDTO
     {
         [Required]
